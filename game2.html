@@ -1,4 +1,12 @@
 <html>
+    @media (min-width: 800px) {
+   /* 表示領域が800px以上の場合に適用するスタイル */
+   div.column { width: 240px; float: left; }
+}
+@media (max-width: 799px) {
+   /* 表示領域が800px未満の場合に適用するスタイル */
+   div.column { width: 100%; }
+}
 <head>
 <script>
 let Q = [//クイズ
