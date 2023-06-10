@@ -1,0 +1,104 @@
+<html>
+<head>
+<script>
+let Q = [//クイズ
+'Q.この中でB型は？',
+' onclick="Q_(1);" >長尾謙杜',
+' onclick="Q_(2);" >西畑大吾', 
+' onclick="Q_(2);" >道枝駿佑',
+' onclick="Q_(2);" >大西流星',
+'長尾謙杜→B型<br/>西畑大吾→AB型<br/>道枝駿佑→O型<br/>大西流星→O型',
+
+'Q.Special Kissの歌詞はどれ？', 
+' onclick="Q_(1);" >A.Everlasting love, just for you',
+' onclick="Q_(2);" >B.「誰か」じゃなくて「君」がいい',
+' onclick="Q_(2);" >C.大胆に境界を越えようかprincess',
+' onclick="Q_(2);" >D.Where do we go? movin1up!',
+'A→Special Kiss<br/>B→シンシア<br/>C→2faced<br/>D→Dreamin Dreamin',
+
+'Q.この中で最年長は誰？', 
+' onclick="Q_(2);" >高橋恭平',
+' onclick="Q_(1);" >藤原丈一郎',
+' onclick="Q_(2);" >大橋和也',
+' onclick="Q_(2);" >大西流星',
+'最年長は藤原丈一郎(1996生)。高橋恭平(2000生)、大橋和也(1997生)、大西流星(2001生)',
+
+'Q.次のうち、デビュー前の曲は？', 
+' onclick="Q_(2);" >MerryCristmas',
+' onclick="Q_(2);" >NANDE?',
+' onclick="Q_(2);" >The Answer',
+' onclick="Q_(1);" >Time View',
+'正解はTime View。作詞は道枝駿佑。',
+
+'Q.1st loveに収録されていない曲は？', 
+' onclick="Q_(2);" >ちゅきちゅきハリケーン',
+' onclick="Q_(2);" >月火水木君曜日',
+' onclick="Q_(2);" >妄想っちゅーDiscooooooo!!',
+' onclick="Q_(1);" >ちゅきちゅきブリザード',
+'「ちゅきちゅきブリザード」はPOPMALL(2ndアルバム)',
+
+'Q.なにわ男子の出演作品は？', 
+' onclick="Q_(1);" >夢中さ、きみに。',
+' onclick="Q_(1);" >メンズ校 ',
+' onclick="Q_(1);" >彼女、お借りします',
+' onclick="Q_(1);" >なのに、千輝くんが甘すぎる。',
+'すべて主演作品です。「夢中さ、きみに。」「彼女、お借りします」(ドラマ)は大西流星、「なのに、千輝くんが甘すぎる。」（映画）は高橋恭平、「メンズ校」(ドラマ)はメンバー全員が主演。',
+];
+
+let r_1 = Q.length / 6;//クイズを出すための変数
+let r_2 = Math.floor( Math.random() * r_1 ) ;
+let R = (r_2 * 6) ;//クイズを出すための変数
+
+
+//次の問題を表示するためのプログラムです
+function Q_(oxq) {
+
+	if (oxq === 0){
+	
+	 r_1 = Q.length / 6;
+	 r_2 = Math.floor( Math.random() * r_1 );
+	 R = (r_2 * 6);
+
+ 	 document.getElementById("ox").innerHTML = '';
+	 document.getElementById("quiz").innerHTML = '';
+
+	 quiz = document.getElementById('quiz');
+	 quiz.insertAdjacentHTML('afterbegin', '<p>'+Q[R]+'</p>');
+	 quiz.insertAdjacentHTML('beforeend', '<button'+Q[R+1]+'</button><br/>');
+	 quiz.insertAdjacentHTML('beforeend', '<button'+Q[R+2]+'</button><br/>');
+	 quiz.insertAdjacentHTML('beforeend', '<button'+Q[R+3]+'</button><br/>'); 
+       quiz.insertAdjacentHTML('beforeend', '<button'+Q[R+4]+'</button><br/>');
+
+	} else if (oxq === 1) {//正解時の実行プログラムです
+ 	 document.getElementById("ox").innerHTML = '<p>正解！</p>';
+	 document.getElementById("quiz").innerHTML = '<p>'+Q[R+5]+'</p>';
+ 	 document.getElementById("next").innerHTML = '<p><button onClick="Q_(0);">次の問題へ</button></p>';
+
+	} else if (oxq === 2) {//失敗時の実行プログラムです
+ 	 document.getElementById("ox").innerHTML = '<p>不正解！</p>';
+	 document.getElementById("quiz").innerHTML = '<p>'+Q[R+5]+'</p>';
+ 	 document.getElementById("next").innerHTML = '<p><button onClick="Q_(0);">次の問題へ</button></p>';
+	}
+}
+
+</script>
+</head>
+<body>
+
+<script>
+document.write('<p id="ox"></p>');
+
+document.write('<p id="quiz">');
+document.write(Q[R+0] +'<br/>');
+document.write('<button'+ Q[R+1] +'</button><br/>');
+document.write('<button'+ Q[R+2] +'</button><br/>');
+document.write('<button'+ Q[R+3] +'</button><br/>');
+document.write('<button'+ Q[R+4] +'</button><br/>');
+document.write('</p>');
+
+document.write('<p id="next"><button onClick="Q_(0);">次の問題へ</button></p>');
+</script>
+
+
+</body>
+</html>
